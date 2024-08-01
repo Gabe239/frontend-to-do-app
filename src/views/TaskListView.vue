@@ -5,7 +5,7 @@
       <div class="col col-lg-9 col-xl-7">
         <div class="card rounded-3">
           <div class="card-body p-4">
-            <h4 class="text-center my-3 pb-3">To Do App</h4>
+            <h1 class="text-center my-3 pb-3">To Do App</h1>
             <TaskList />
           </div>
         </div>

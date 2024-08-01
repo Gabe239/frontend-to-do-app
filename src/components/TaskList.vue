@@ -6,59 +6,22 @@
         <use xlink:href="#arrow-right-short"></use>
       </svg>
     </button>
-    <div class="table-responsive mt-4">
-      <table class="table table-striped table-hover">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Todo item</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="task in paginatedTasks" :key="task.id">
-            <th scope="row">{{ task.id }}</th>
-            <td>{{ task.title }}</td>
-            <td>{{ task.description }}</td>
-            <td>
-              <span :class="{ 'badge bg-success': task.status, 'badge bg-warning': !task.status }">
-                {{ task.status ? 'Completed' : 'In progress' }}
-              </span>
-            </td>
-            <td>
-              <div class="btn-group">
-                <button class="btn btn-primary" @click="editTask(task.id)">Edit</button>
-                <button class="btn btn-success" @click="markAsFinished(task.id)" v-if="!task.status">Finish</button>
-                <button class="btn btn-danger" @click="deleteTask(task.id)">Delete</button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <nav aria-label="Page navigation" class="mt-4">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" :class="{ disabled: currentPage === 1 }">
-          <button class="page-link" @click="changePage(currentPage - 1)">Previous</button>
-        </li>
-        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ active: page === currentPage }">
-          <button class="page-link" @click="changePage(page)">{{ page }}</button>
-        </li>
-        <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-          <button class="page-link" @click="changePage(currentPage + 1)">Next</button>
-        </li>
-      </ul>
-    </nav>
+    <TaskTable :tasks="paginatedTasks" @edit-task="editTask" @delete-task="deleteTask" @mark-as-finished="markAsFinished" />
+    <TaskPagination :current-page="currentPage" :total-pages="totalPages" @change-page="changePage" />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import TaskTable from './TaskTable.vue';
+import TaskPagination from './TaskPagination.vue';
 
 export default {
   name: 'TaskList',
+  components: {
+    TaskTable,
+    TaskPagination,
+  },
   data() {
     return {
       tasks: [],
@@ -125,21 +88,5 @@ export default {
 <style scoped>
 .container {
   max-width: 1200px; 
-}
-
-.table {
-  margin-top: 20px;
-}
-
-.badge {
-  padding: 0.5em;
-}
-
-.pagination {
-  margin-top: 20px;
-}
-
-.btn-group .btn {
-  margin-right: 5px;
 }
 </style>
