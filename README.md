@@ -9,15 +9,14 @@ Este es el frontend de una aplicación de gestión de tareas construida con Vue.
 - Node.js
 - Yarn (administrador de paquetes)
 
-### Instalación
+Instalación
 Para instalar las dependencias del proyecto, ejecuta el siguiente comando:
 
 yarn install
 
 Variables de Entorno
 
-Crea un archivo .env en la raíz del proyecto y define las siguientes variables de entorno que se encuentran dento de .env-example, de ahí se obtiene la referencia para poder seguir.
-
+Crea un archivo .env en la raíz del proyecto y define las siguientes variables de entorno que se encuentran dentro de .env-example, de ahí se obtiene la referencia para poder seguir.
 Compilar y Recargar en Caliente para Desarrollo
 
 Para iniciar el servidor de desarrollo con recarga en caliente, ejecuta:
@@ -94,3 +93,6 @@ Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
 Licencia
 
 Este proyecto está licenciado bajo la MIT License.
+
+
+Este archivo README está formateado en Markdown y contiene toda la información necesaria para configurar, usar y contr
