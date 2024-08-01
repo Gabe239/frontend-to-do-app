@@ -45,7 +45,7 @@ export default {
   methods: {
     async fetchTask() {
       try {
-        const response = await axios.get(`${process.env.VUE_APP_API_URL}/api/task/${this.$route.params.id}`);
+        const response = await axios.get(`${process.env.VUE_APP_API_URL}/task/${this.$route.params.id}`);
         const task = response.data;
         this.title = task.title;
         this.description = task.description;
